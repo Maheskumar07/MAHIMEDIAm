@@ -13,27 +13,25 @@
 <body>
 
 <div class="box">
-    <h2>Log In</h2>
-    <input type="email" id="email" placeholder="Email Id">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="loginUser()">Log IN</button>
-    <p>Create A New Account? <a href="signup.html">Click Here</a></p>
+    <h2>લોગીન (Login)</h2>
+    <input type="email" id="email" placeholder="ઇમેઇલ આઇડી">
+    <input type="password" id="password" placeholder="પાસવર્ડ">
+    <button onclick="loginUser()">લોગીન કરો</button>
+    <p>નવું એકાઉન્ટ બનાવવું છે? <a href="signup.html">અહીં ક્લિક કરો</a></p>
 </div>
 
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
 <script>
-  // Your web app's Firebase configuration
-  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  // ⚠️ તમારો Firebase કોડ અહીં પણ પેસ્ટ કરો
   const firebaseConfig = {
     apiKey: "AIzaSyBpebYhcGHdgthrLN7IGkT4LIu4QL0zZJA",
-    authDomain: "mahimedia-f991c.firebaseapp.com",
-    projectId: "mahimedia-f991c",
-    storageBucket: "mahimedia-f991c.firebasestorage.app",
-    messagingSenderId: "543258433729",
-    appId: "1:543258433729:web:90981974940746207f1c40",
-    measurementId: "G-XGGQLZ1ZJ7"
+    authDomain: "YOUR_AUTH_DOMAIN",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "AIzaSyBpebYhcGHdgthrLN7IGkT4LIu4QL0zZJA",
   };
   firebase.initializeApp(firebaseConfig);
 
@@ -47,7 +45,7 @@
           window.location.href = "index.html"; 
       })
       .catch((error) => {
-          alert("Log IN Error: " + error.message);
+          alert("લોગીન નિષ્ફળ: " + error.message);
       });
   }
 </script>
