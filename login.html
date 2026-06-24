@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - લોગીન કરો</title>
+    <style>
+        body { font-family: Arial, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background: #f4f4f4; }
+        .box { background: white; padding: 30px; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0,0,0,0.1); width: 300px; }
+        input { width: 100%; padding: 10px; margin: 10px 0; box-sizing: border-radius; border: 1px solid #ccc; }
+        button { width: 100%; padding: 10px; background: #007bff; color: white; border: none; cursor: pointer; }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Log In</h2>
+    <input type="email" id="email" placeholder="Email Id">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="loginUser()">Log IN</button>
+    <p>Create A New Account? <a href="signup.html">Click Here</a></p>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBpebYhcGHdgthrLN7IGkT4LIu4QL0zZJA",
+    authDomain: "mahimedia-f991c.firebaseapp.com",
+    projectId: "mahimedia-f991c",
+    storageBucket: "mahimedia-f991c.firebasestorage.app",
+    messagingSenderId: "543258433729",
+    appId: "1:543258433729:web:90981974940746207f1c40",
+    measurementId: "G-XGGQLZ1ZJ7"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  function loginUser() {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+          // લોગીન સફળ થાય એટલે મુખ્ય પેજ પર મોકલી આપો
+          window.location.href = "index.html"; 
+      })
+      .catch((error) => {
+          alert("Log IN Error: " + error.message);
+      });
+  }
+</script>
+</body>
+</html>

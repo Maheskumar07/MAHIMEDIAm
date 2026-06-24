@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Blog and Affiliate Website</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+    body { display: none; } 
+</style>
+
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  const firebaseConfig = {
+    apiKey: "AIzaSyBpebYhcGHdgthrLN7IGkT4LIu4QL0zZJA",
+    authDomain: "mahimedia-f991c.firebaseapp.com",
+    projectId: "mahimedia-f991c",
+    storageBucket: "mahimedia-f991c.firebasestorage.app",
+    messagingSenderId: "543258433729",
+    appId: "1:543258433729:web:90981974940746207f1c40",
+    measurementId: "G-XGGQLZ1ZJ7"
+  };
+  firebase.initializeApp(firebaseConfig);
+
+  // લોગીન સ્ટેટસ ચેક કરવું
+  firebase.auth().onAuthStateChanged((user) => {
+    if (!user) {
+      // જો યુઝર લોગીન નથી, તો તેને લોગીન પેજ પર ધકેલો
+      window.location.href = "login.html";
+    } else {
+      // જો લોગીન છે, તો જ વેબસાઇટ બતાવો
+      document.body.style.display = "block";
+    }
+  });
+</script>
+</head>
+<body>
+
+    <header>
+        <div class="logo">MahiMedia</div>
+        <nav>
+            <a href="#home">HOME</a>
+            <a href="#influencer-promo">INFLUENCERS</a> <a href="#blog">BLOG</a>
+            <a href="#shop">PRODUCTS</a>
+        </nav>
+    </header>
+
+     <section id="home" class="hero">
+        <h1>Welcome to the Website</h1>
+        <p>Here You will find Links to Best Technology Blogs and Useful Products.</p>
+    </section>
+    <section class="social-section">
+        <h2>Join Us</h2>
+        <p>Follow on Social Media for the Latest Videos and Updates:</p>
+        <div class="social-buttons">
+            <a href="https://youtube.com/@mood_with_mk?si=BLKP-cUsTm4mj9eR" target="_blank" class="btn youtube-btn">YouTube પર સબ્સ્ક્રાઇબ કરો</a>
+            <a href="https://www.facebook.com/share/1FyFS4cXS8/" target="_blank" class="btn fb-btn">Facebook પર ફોલો કરો</a>
+        </div>
+    </section>
+    <section id="influencer-promo" class="influencer-section">
+        <h2>Our Favorite Influencers</h2>
+        <p>Follow these Creators who are Taking Social Media by Storm Today:</p>
+
+        <div class="admin-panel">
+            <h3>Add New Influencer</h3>
+            <input type="text" id="infName" placeholder="Influencer Name...">
+            <input type="text" id="infCategory" placeholder="category (Entertainment,science,Motivation)...">
+            <input type="text" id="infBio" placeholder="short Information...">
+            <input type="text" id="infImg" placeholder="Profile Photo (Image URL)...">
+            <input type="text" id="infLink" placeholder="Social Media profile Link...">
+            <select id="infPlatform">
+                <option value="insta">Instagram</option>
+                <option value="youtube">YouTube</option>
+                <option value="facebook">Facebook</option>
+            </select>
+            <button onclick="addNewInfluencer()" class="publish-btn" style="background-color: #9b59b6;">Add Creator</button>
+        </div>
+
+        <div class="influencer-grid" id="influencerContainer"></div>
+    </section>
+
+    <section id="blog" class="blog-section">
+        <h2>Latest Blog Articles</h2>
+        
+        <div class="admin-panel">
+            <h3>Add New Blogs</h3>
+            <input type="text" id="blogTitle" placeholder="Blog Title (Title)...">
+            <textarea id="blogDesc" rows="4" placeholder="Blog Text (Content)..."></textarea>
+            <button onclick="addNewBlog()" class="publish-btn">Publish Blog</button>
+        </div>
+
+        <div class="blog-container" id="blogContainer">
+            </div>
+    </section>
+
+    <script src="script.js"></script>
+    <section id="shop" class="products-section">
+        <h2>Best Recommended Products (My Picks)</h2>
+        <p>Products Specially Selected for You:</p>
+
+        <div class="admin-panel">
+            <h3>New Product</h3>
+            <input type="text" id="prodTitle" placeholder="Product Name...">
+            <input type="text" id="prodPrice" placeholder="New Price...">
+            <input type="text" id="prodOldPrice" placeholder="Old Price...">
+            <input type="text" id="prodImg" placeholder="image(Image URL)...">
+            <input type="text" id="prodLink" placeholder="Affliate Link...">
+            <button onclick="addNewProduct()" class="publish-btn" style="background-color: #ff9900;">Add Product</button>
+        </div>
+
+        <div class="products-grid" id="productsContainer">
+            </div>
+    </section>
+    <footer>
+        <p>&copy; 2026 MahiMedia. All Rights Reserved.</p>
+        <div class="footer-links">
+            <a href="#home">Home</a> | 
+            <a href="#influencer-promo">Influencers</a> | <a href="#blog">Blog</a> | 
+            <a href="#shop">Product</a>
+        </div>
+    </footer>
+
+</body>
+</html>
